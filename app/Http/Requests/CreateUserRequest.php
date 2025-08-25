@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 
-class SignUpRequest extends FormRequest
+class CreateUserRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
