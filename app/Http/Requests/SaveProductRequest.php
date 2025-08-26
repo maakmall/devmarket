@@ -34,6 +34,11 @@ class SaveProductRequest extends FormRequest
             'file' => [
                 Rule::requiredIf(fn() => $this->routeIs('products.store')),
                 'file'
+            ],
+            'image' => [
+                Rule::requiredIf(fn() => $this->routeIs('products.store')),
+                'image',
+                'max:2048'
             ]
         ];
     }

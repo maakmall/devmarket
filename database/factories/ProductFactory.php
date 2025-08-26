@@ -22,6 +22,7 @@ class ProductFactory extends Factory
             'description' => fake()->paragraphs(asText: true),
             'price' => fake()->randomNumber() * 1000,
             'file' => Str::random(20) . '.zip',
+            'image' => Str::random(20) . '.jpg',
             'user_id' => fake()->randomNumber(3, true),
             'category_id' => fake()->randomNumber(4, true),
         ];

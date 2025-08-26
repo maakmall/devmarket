@@ -46,7 +46,8 @@ class ProductController extends Controller
     public function store(SaveProductRequest $request): ProductResource
     {
         $data = $request->validated();
-        $data['file'] = $request->file('file')->store();
+        $data['file'] = $request->file('file')->store('app');
+        $data['image'] = $request->file('image')->store('image', 'public');
         $data['user_id'] = $request->user()->id;
 
         return Product::create($data)
@@ -71,9 +72,14 @@ class ProductController extends Controller
         $data = $request->validated();
         $data['user_id'] = $request->user()->id;
 
-        if ($request->has('file')) {
-            $data['file'] = $request->file('file')->store();
+        if ($request->hasFile('file')) {
+            $data['file'] = $request->file('file')->store('app');
             Storage::delete($product->file);
+        }
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('image', 'public');
+            Storage::delete($product->image);
         }
 
         $product->update($data);

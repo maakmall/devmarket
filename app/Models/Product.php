@@ -26,6 +26,7 @@ class Product extends Model
         'category_id',
         'user_id',
         'file',
+        'image',
     ];
 
     public function category(): BelongsTo
