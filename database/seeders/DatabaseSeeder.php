@@ -25,5 +25,7 @@ class DatabaseSeeder extends Seeder
         ];
 
         Category::upsert($categories, ['name'], ['name']);
+
+        $this->call(ProductSeeder::class);
     }
 }
