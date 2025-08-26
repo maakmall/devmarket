@@ -26,7 +26,7 @@ class ProductController extends Controller
 
         $pageSize = $validated['pagesize'] ?? 10;
 
-        $products = Product::select(['id', 'name', 'price', 'category_id', 'user_id'])
+        $products = Product::select(['id', 'name', 'price', 'category_id', 'user_id', 'image'])
             ->with(['category:name,id', 'user:name,id']);
 
         if (isset($validated['category'])) {
