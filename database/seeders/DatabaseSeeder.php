@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Role;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,5 +16,16 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(3)->create();
+
+        $categories = [
+            ['name' => 'Web'],
+            ['name' => 'Desktop'],
+            ['name' => 'Mobile'],
+            ['name' => 'Embedded System']
+        ];
+
+        Category::upsert($categories, ['name'], ['name']);
+
+        $this->call(ProductSeeder::class);
     }
 }
